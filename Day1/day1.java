@@ -97,7 +97,6 @@ public class day1 {
 
             if (start == 0) {
                 count += 1;
-                System.out.println("previous:" + previousNum + " after turn: " + start);
             }             
 
             count += revolutions;
