@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class day1 {
+public class Day01 {
     public static void main(String[] args) {
 
         ArrayList<String> lines = getFileData("/workspaces/AdventOfCode-2025/Day1/data");

@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class day2 {
+public class Day02 {
     public static void main(String[] args) {
 
         // Day 2 data parsing set up
@@ -22,27 +22,45 @@ public class day2 {
         // "productIDs" is a list of "long" variables that make up each product ID from the file
 
         long partOneAnswer = 0;
-
+        long partTwoAnswer = 0;
         for (Long p : productIDs) {
             if (isValidProductID(p, false)) {
                 partOneAnswer += p;
+            }
+
+        }
+        for (Long p : productIDs) {
+            if (isValidProductID(p, true)) {
+                partTwoAnswer += p;
                 System.out.println(p);
+
             }
 
         }
 
         System.out.println("Part one answer: " + partOneAnswer);
+        System.out.println("Part two answer: " + partTwoAnswer);
     }
 
     public static boolean isValidProductID(long productID, boolean partTwo) {
         String pID = productID + "";
-        if (pID.length() % 2 != 0) {
-            return false;
+        
+        if (!partTwo) {
+            if (pID.length() % 2 != 0) {
+                return false;
+            }
+            String firstHalf = pID.substring(0, pID.length()/2);
+            String secondHalf = pID.substring(pID.length()/2);
+            if (firstHalf.equals(secondHalf)) {
+                return true;
+            }
         }
-        String firstHalf = pID.substring(0, pID.length()/2);
-        String secondHalf = pID.substring(pID.length()/2);
-        if (firstHalf.equals(secondHalf)) {
-            return true;
+        else {
+            String temp = pID + pID;
+            temp = temp.substring(1, temp.length() - 1);
+            if (temp.contains(pID)) {
+                return true;
+            }
         }
         return false;
     }
